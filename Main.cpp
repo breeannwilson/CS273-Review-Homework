@@ -1,51 +1,27 @@
 #include <iostream>
-#include <vector>
+#include "Circle.h"
 
 using namespace std;
 
-template<typename T>
-void Swap(T & A, T & B) {
-	T tmp = A;
-	A = B;
-	B = tmp;
-}
-
-template<typename T>
-class myVec {
-private:
-	T *array;
-
-public:
-	//default size
-	myVec() {
-		int size = 0;
-	}
-	myVec(int size) {
-		array = new T[size];
-	}
-
-	~myVec() {
-		delete[] array;
-	}
-};
-
-
-
 void main() {
 
-	//declare object of myVec Class to hold array of double data types
-	myVec<double> v1;
+	Circle myCircle1;
+	Circle myCircle2(10);
 
-	//declare STL vector object for storing elements of char data type
-	vector<char> v2;
+	//declare pointer variable to Circle object and allocate memory for it using the 
+	//overloaded constructor to initialize its radius to "12"
+	Circle* pCircle;
+	pCircle = new Circle();
+	*pCircle = Circle(12);
 
-	//for loop to assign "b" to every element in v2
-	for (unsigned i = 0; i < v2.size(); i++) {
-		v2[i] = 'b';
+	//declare an array of 10 Circle objects using the default constructor
+	Circle circle[10];
+
+	//assigns the radius of every Circle object in the array to "15"
+	for (int i = 0; i < 10; i++) {
+		circle[i].setRadius(15);
+		cout << "The Radius of circle " << i << " is " << circle[i].getRadius() << endl;
 	}
-
-	//what STL vector method do you use to get current size of the vector?
-	cout << "The size of vector v2 is: " << v2.size() << endl;
 
 	system("pause");
 
