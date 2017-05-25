@@ -1,34 +1,52 @@
 #include <iostream>
-#include "Circle.h"
-#include "Animal.h"
-#include "Cat.h"
-#include "Mouth.h"
+#include <vector>
 
 using namespace std;
+
+template<typename T>
+void Swap(T & A, T & B) {
+	T tmp = A;
+	A = B;
+	B = tmp;
+}
+
+template<typename T>
+class myVec {
+private:
+	T *array;
+
+public:
+	//default size
+	myVec() {
+		int size = 0;
+	}
+	myVec(int size) {
+		array = new T[size];
+	}
+
+	~myVec() {
+		delete[] array;
+	}
+};
+
 
 
 void main() {
 
-	//When class A inherits class B, class A also inherits all public methods and 
-	//variables in class B?
-	//ANSWER: true
+	//declare object of myVec Class to hold array of double data types
+	myVec<double> v1;
 
-	//When class A inherits class B, can the private member variables of class B
-	//be accessed in class A?
-	//ANSWER: yes - if the private variable has a get function in public
+	//declare STL vector object for storing elements of char data type
+	vector<char> v2;
 
-	//create a Cat object
-	Cat c;
-	cout << "The name of Cat is: " << c.getName() << endl;
-	cout << "This cat has " << c.m.getTeeth() << " teeth." << endl;
+	//for loop to assign "b" to every element in v2
+	for (unsigned i = 0; i < v2.size(); i++) {
+		v2[i] = 'b';
+	}
 
-	//declare two Circle objects from the Circle class
-	//circle c1 has radius 3
-	Circle c1(3);
-	//circle c2 has radius 5
-	Circle c2(5);
+	//what STL vector method do you use to get current size of the vector?
+	cout << "The size of vector v2 is: " << v2.size() << endl;
 
-	//create circle object with the combined radii of c1 and c2
-	cout << "c1 + c2 = " << (c1 + c2) << endl;
 	system("pause");
+
 }
